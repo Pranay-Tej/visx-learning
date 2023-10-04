@@ -14,7 +14,7 @@ const width = 500;
 const margin = {
   top: 20,
   bottom: 20,
-  left: 20,
+  left: 60,
   right: 20,
 };
 

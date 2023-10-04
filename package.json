@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@visx/axis": "^3.3.0",
+    "@visx/curve": "^3.3.0",
+    "@visx/grid": "^3.3.0",
     "@visx/group": "^3.3.0",
     "@visx/scale": "^3.3.0",
     "@visx/shape": "^3.3.0",
