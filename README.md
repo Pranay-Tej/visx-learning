@@ -6,9 +6,11 @@
 - [x] Bar Chart with Tooltip
 - [x] Line Chart with Tooltip
 - [x] Line Chart Dots
-- [] Two Bars grouped
+- [x] Two Bars grouped
 - [] Bar + Line + Left & Right Axes
-- [] Highlight hovered point with point on line and vertical line on bar
+- [x] Highlight hovers
+   - [x] Bar Chart hover line
+   - [x] Line Chart hover dot
 - [] Mobile
   - [] Brush/Scrubber
   - [] Legend on top

@@ -4,6 +4,7 @@ import BarChartToolTip from "./BarChartToolTip";
 import LineChartTooltip from "./LineChartTooltip";
 import LineChartDots from "./LineChartDots";
 import BarChartsTwoGrouped from "./BarChartsTwoGrouped";
+import LineChartHoverDot from "./LineChartHoverDot";
 
 export default function App() {
   return (
@@ -17,6 +18,8 @@ export default function App() {
       <LineChartDots />
 
       <BarChartsTwoGrouped />
+
+      <LineChartHoverDot />
     </>
   );
 }
