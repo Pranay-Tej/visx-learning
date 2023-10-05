@@ -58,54 +58,57 @@ export default function BarLineGrouped() {
   });
 
   return (
-    <svg height={height} width={width}>
-      <Group>
-        <Grid
-          xScale={xScale}
-          yScale={yScaleBars}
-          width={width - margin.right - margin.left}
-          height={height - margin.bottom - margin.top}
-          left={margin.left}
-        />
+    <div>
+      <h2>BarLineGrouped</h2>
+      <svg height={height} width={width}>
+        <Group>
+          <Grid
+            xScale={xScale}
+            yScale={yScaleBars}
+            width={width - margin.right - margin.left}
+            height={height - margin.bottom - margin.top}
+            left={margin.left}
+          />
 
-        {Object.entries(barData).map(([date, value]) => {
-          return (
-            <Bar
-              key={date}
-              x={xScale(date)}
-              y={yScaleBars(value)}
-              width={xScale.bandwidth()}
-              height={height - margin.bottom - yScaleBars(value)}
-              fill="#33A3E3"
-            />
-          );
-        })}
+          {Object.entries(barData).map(([date, value]) => {
+            return (
+              <Bar
+                key={date}
+                x={xScale(date)}
+                y={yScaleBars(value)}
+                width={xScale.bandwidth()}
+                height={height - margin.bottom - yScaleBars(value)}
+                fill="#33A3E3"
+              />
+            );
+          })}
 
-        <LinePath
-          data={transformedLineData}
-          x={(d) => (xScale(d.date) ?? 0) + xScale.bandwidth() / 2}
-          y={(d) => yScaleLine(d.value)}
-          stroke="#D256F1"
-          strokeWidth={2}
-          curve={curveMonotoneX}
-        />
+          <LinePath
+            data={transformedLineData}
+            x={(d) => (xScale(d.date) ?? 0) + xScale.bandwidth() / 2}
+            y={(d) => yScaleLine(d.value)}
+            stroke="#D256F1"
+            strokeWidth={2}
+            curve={curveMonotoneX}
+          />
 
-        <AxisLeft
-          scale={yScaleLine}
-          left={margin.left}
-          hideAxisLine
-          hideTicks
-          label="Line Chart"
-        />
-        <AxisRight
-          scale={yScaleBars}
-          left={width - margin.right}
-          hideAxisLine
-          hideTicks
-          label="Bar Chart"
-        />
-        <AxisBottom scale={xScale} top={height - margin.bottom} />
-      </Group>
-    </svg>
+          <AxisLeft
+            scale={yScaleLine}
+            left={margin.left}
+            hideAxisLine
+            hideTicks
+            label="Line Chart"
+          />
+          <AxisRight
+            scale={yScaleBars}
+            left={width - margin.right}
+            hideAxisLine
+            hideTicks
+            label="Bar Chart"
+          />
+          <AxisBottom scale={xScale} top={height - margin.bottom} />
+        </Group>
+      </svg>
+    </div>
   );
 }

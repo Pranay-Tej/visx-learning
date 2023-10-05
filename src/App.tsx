@@ -6,6 +6,7 @@ import LineChartDots from "./LineChartDots";
 import BarChartsTwoGrouped from "./BarChartsTwoGrouped";
 import LineChartHoverDot from "./LineChartHoverDot";
 import BarLineGrouped from "./BarLineGrouped";
+import BothAboveAndBelowXAxis from "./BothAboveAndBelowXAxis";
 
 export default function App() {
   return (
@@ -21,6 +22,8 @@ export default function App() {
       <BarChartsTwoGrouped />
 
       <LineChartHoverDot />
+
+      <BothAboveAndBelowXAxis />
 
       <BarLineGrouped />
     </>
