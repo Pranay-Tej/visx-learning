@@ -2,8 +2,9 @@ import { AxisBottom, AxisLeft } from "@visx/axis";
 import { localPoint } from "@visx/event";
 import { Group } from "@visx/group";
 import { scaleBand, scaleLinear } from "@visx/scale";
-import { Bar } from "@visx/shape";
+import { Bar, Line } from "@visx/shape";
 import { TooltipWithBounds, useTooltip } from "@visx/tooltip";
+import { useState } from "react";
 
 type SalesData = {
   [key: string]: number;
@@ -44,6 +45,8 @@ export default function BarChartsTwoGrouped() {
     tooltipTop,
   } = useTooltip();
 
+  const [hoverDate, setHoverDate] = useState<string | null>(null);
+
   const xScale = scaleBand({
     domain: Object.keys(bikeSalesData),
     range: [margin.left, width - margin.right],
@@ -68,7 +71,11 @@ export default function BarChartsTwoGrouped() {
 
     const date = dates[index];
 
-    if (!date) return;
+    if (!date) {
+      setHoverDate(null);
+      return;
+    }
+    setHoverDate(date);
 
     showTooltip({
       tooltipLeft: x,
@@ -84,11 +91,16 @@ export default function BarChartsTwoGrouped() {
   return (
     // position relative is required for the tooltip
     <div style={{ position: "relative" }}>
+      <h2>BarChartsTwoGrouped + Hover Indicator vertical line</h2>
       <svg
         width={width}
         height={height}
         onMouseMove={handleMouseMove}
-        onMouseLeave={() => hideTooltip()}
+        onMouseLeave={() => {
+          //   clear hover date
+          setHoverDate(null);
+          hideTooltip();
+        }}
       >
         <Group>
           {Object.entries(bikeSalesData).map(([date, value]) => (
@@ -112,6 +124,19 @@ export default function BarChartsTwoGrouped() {
               fill="grey"
             />
           ))}
+          {hoverDate && (
+            <Line
+              stroke="blue"
+              from={{
+                x: (xScale(hoverDate) ?? 0) + xScale.bandwidth() / 2,
+                y: margin.top,
+              }}
+              to={{
+                x: (xScale(hoverDate) ?? 0) + xScale.bandwidth() / 2,
+                y: height - margin.bottom,
+              }}
+            />
+          )}
           <AxisLeft scale={yScale} left={margin.left} />
           <AxisBottom scale={xScale} top={height - margin.bottom} />
         </Group>
