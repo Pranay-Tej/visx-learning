@@ -1,6 +1,7 @@
 import BarChart from "./BarChart";
 import LineChart from "./LineChart";
 import BarChartToolTip from "./BarChartToolTip";
+import LineChartTooltip from "./LineChartTooltip";
 
 export default function App() {
   return (
@@ -9,6 +10,7 @@ export default function App() {
       <LineChart />
 
       <BarChartToolTip />
+      <LineChartTooltip />
     </>
   );
 }
