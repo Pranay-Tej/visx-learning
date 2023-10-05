@@ -1,7 +1,7 @@
 import { AxisBottom, AxisLeft } from "@visx/axis";
 import { Group } from "@visx/group";
 import { scaleLinear, scaleTime } from "@visx/scale";
-import { LinePath } from "@visx/shape";
+import { Circle, LinePath } from "@visx/shape";
 import { curveMonotoneX } from "@visx/curve";
 import { Grid } from "@visx/grid";
 import { TooltipWithBounds, defaultStyles, useTooltip } from "@visx/tooltip";
@@ -36,7 +36,7 @@ const tooltipStyles = {
   ...defaultStyles,
 };
 
-export default function LineChartTooltip() {
+export default function LineChartDots() {
   const {
     hideTooltip,
     showTooltip,
@@ -45,6 +45,7 @@ export default function LineChartTooltip() {
     tooltipLeft,
     tooltipTop,
   } = useTooltip();
+
 
   const xScale = scaleTime({
     domain: [xMin, xMax],
@@ -89,12 +90,14 @@ export default function LineChartTooltip() {
   return (
     // position relative is required to position the tooltip
     <div style={{ position: "relative" }}>
-      <h2>Line Chart Tooltip</h2>
+      <h2>LineChartDots</h2>
       <svg
         width={width}
         height={height}
         onMouseMove={handleMouseMove}
-        onMouseLeave={() => hideTooltip()}
+        onMouseLeave={() => {
+          hideTooltip();
+        }}
       >
         <Group>
           <Grid
@@ -118,6 +121,22 @@ export default function LineChartTooltip() {
             fill="none"
             curve={curveMonotoneX}
           />
+
+          {/* Dots */}
+          {
+            transformedData.map((d) => {
+              return (
+                <Circle
+                  key={d.date.toDateString()}
+                  cx={xScale(d.date)}
+                  cy={yScale(d.value)}
+                  r={4} // radius of the circle, adjust as needed
+                  fill="red" // color of the circle, adjust as needed
+                />
+              );
+            })
+          }
+
           <AxisLeft
             scale={yScale}
             left={margin.left}
