@@ -8,10 +8,11 @@
 - [x] Line Chart Dots
 - [x] Two Bars grouped
 - [x] Bar + Line + Left & Right Axes
+  - [ ] Equal ticks on vertical scales
 - [x] Highlight hovers
-   - [x] Bar Chart hover line
-   - [x] Line Chart hover dot
-- [] Both above and below x-axis
-- [] Mobile
-  - [] Brush/Scrubber
-  - [] Legend on top
+  - [x] Bar Chart hover line
+  - [x] Line Chart hover dot
+- [x] Both above and below x-axis
+- [ ] Mobile
+  - [ ] Brush/Scrubber
+  - [ ] Legend on top
