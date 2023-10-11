@@ -7,6 +7,7 @@ import BarChartsTwoGrouped from "./BarChartsTwoGrouped";
 import LineChartHoverDot from "./LineChartHoverDot";
 import BarLineGrouped from "./BarLineGrouped";
 import BothAboveAndBelowXAxis from "./BothAboveAndBelowXAxis";
+import BrushChart from "./BrushChart";
 
 export default function App() {
   return (
@@ -26,6 +27,8 @@ export default function App() {
       <BothAboveAndBelowXAxis />
 
       <BarLineGrouped />
+
+      <BrushChart />
     </>
   );
 }
