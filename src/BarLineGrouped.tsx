@@ -1,6 +1,6 @@
 import { AxisBottom, AxisLeft, AxisRight } from "@visx/axis";
 import { curveMonotoneX } from "@visx/curve";
-import { Grid } from "@visx/grid";
+import { GridColumns, GridRows } from "@visx/grid";
 import { Group } from "@visx/group";
 import { scaleBand, scaleLinear } from "@visx/scale";
 import { Bar, LinePath } from "@visx/shape";
@@ -62,12 +62,19 @@ export default function BarLineGrouped() {
       <h2>BarLineGrouped</h2>
       <svg height={height} width={width}>
         <Group>
-          <Grid
-            xScale={xScale}
-            yScale={yScaleBars}
+          <GridRows
+            scale={yScaleBars}
+            stroke="#E9ECF0"
             width={width - margin.right - margin.left}
-            height={height - margin.bottom - margin.top}
+            numTicks={6}
             left={margin.left}
+            tickValues={[0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]}
+          />
+          <GridColumns
+            scale={xScale}
+            stroke="#E9ECF0"
+            height={height - margin.bottom - margin.top}
+            top={margin.top}
           />
 
           {Object.entries(barData).map(([date, value]) => {
@@ -98,6 +105,7 @@ export default function BarLineGrouped() {
             hideAxisLine
             hideTicks
             label="Line Chart"
+            numTicks={5}
           />
           <AxisRight
             scale={yScaleBars}
@@ -105,6 +113,7 @@ export default function BarLineGrouped() {
             hideAxisLine
             hideTicks
             label="Bar Chart"
+            numTicks={5}
           />
           <AxisBottom scale={xScale} top={height - margin.bottom} />
         </Group>
