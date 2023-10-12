@@ -8,6 +8,7 @@ import LineChartHoverDot from "./LineChartHoverDot";
 import BarLineGrouped from "./BarLineGrouped";
 import BothAboveAndBelowXAxis from "./BothAboveAndBelowXAxis";
 import BrushChart from "./BrushChart";
+import ResponsiveChartDemo from "./ResponsiveChartDemo";
 
 export default function App() {
   return (
@@ -29,6 +30,8 @@ export default function App() {
       <BarLineGrouped />
 
       <BrushChart />
+
+      <ResponsiveChartDemo />
     </>
   );
 }
